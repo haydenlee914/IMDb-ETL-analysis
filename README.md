@@ -1,4 +1,4 @@
-# Food.com Big Data Analysis
+# IMDb ETL Analysis
 
 * Project : IMDb Dataset - Data Engineering for Business Impact
 * Project duration : 2024.11.26 - 2023.12.04
