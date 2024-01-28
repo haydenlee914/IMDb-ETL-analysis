@@ -4,7 +4,7 @@
 * Project duration : 2024.11.26 - 2023.12.04
 * Contributors : Yaeeun Lee, Anne Lim, Aime Munezero
 * Presentation Deck: [Download](https://github.com/haydenlee914/IMDb-ETL-analysis/files/14077809/IMDb.ETL.Analysis.Presentation_Deck.pdf)
-* Report: [Download](https://github.com/haydenlee914/Food.com-analysis/files/14077721/Food.com_Big_Data_Report.pdf)
+* Report: [Download](https://github.com/haydenlee914/IMDb-ETL-analysis/files/14077812/Report.pdf)
 
 Key Business Objectives
 -------------
