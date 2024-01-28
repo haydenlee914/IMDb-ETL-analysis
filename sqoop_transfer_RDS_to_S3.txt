@@ -1,0 +1,51 @@
+
+## Below are the codes used to move data from RDS to S3 using Scoop commands before different tables 
+
+# Commands for loading tables with numeric primary keys
+
+sqoop import --connect jdbc:mysql://groupdb.clvyneobhqj2.us-east-1.rds.amazonaws.com/IMDB_NORMALIZED --username admin --password groupdb1234567890 --table Type --target-dir s3://groupmsba/Type --as-parquetfile
+sqoop import --connect jdbc:mysql://groupdb.clvyneobhqj2.us-east-1.rds.amazonaws.com/IMDB_NORMALIZED --username admin --password groupdb1234567890 --table Region --target-dir s3://groupmsba/Region --as-parquetfile
+sqoop import --connect jdbc:mysql://groupdb.clvyneobhqj2.us-east-1.rds.amazonaws.com/IMDB_NORMALIZED --username admin --password groupdb1234567890 --table Title --target-dir s3://groupmsba/Title --as-parquetfile
+sqoop import --connect jdbc:mysql://groupdb.clvyneobhqj2.us-east-1.rds.amazonaws.com/IMDB_NORMALIZED --username admin --password groupdb1234567890 --table Language --target-dir s3://groupmsba/Language --as-parquetfile
+sqoop import --connect jdbc:mysql://groupdb.clvyneobhqj2.us-east-1.rds.amazonaws.com/IMDB_NORMALIZED --username admin --password groupdb1234567890 --table Genre --target-dir s3://groupmsba/Genre --as-parquetfile
+sqoop import --connect jdbc:mysql://groupdb.clvyneobhqj2.us-east-1.rds.amazonaws.com/IMDB_NORMALIZED --username admin --password groupdb1234567890 --table Profession --target-dir s3://groupmsba/Profession --as-parquetfile
+
+## Copying tables without a numeric primary key or with composite primary key
+
+  sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true \
+--connect jdbc:mysql://groupdb.clvyneobhqj2.us-east-1.rds.amazonaws.com/IMDB_NORMALIZED \
+--username admin \
+--password groupdb1234567890 \
+--table MovieGenre \
+--target-dir s3://groupmsba/MovieGenre \
+--as-parquetfile
+
+sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true \
+--connect jdbc:mysql://groupdb.clvyneobhqj2.us-east-1.rds.amazonaws.com/IMDB_NORMALIZED \
+--username admin \
+--password groupdb1234567890 \
+--table PersonProfession \
+--target-dir s3://groupmsba/PersonProfession \
+--as-parquetfile
+
+sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true \
+--connect jdbc:mysql://groupdb.clvyneobhqj2.us-east-1.rds.amazonaws.com/IMDB_NORMALIZED \
+--username admin \
+--password groupdb1234567890 \
+--table Person \
+--target-dir s3://groupmsba/Person \
+--as-parquetfile
+
+sqoop import -Dorg.apache.sqoop.splitter.allow_text_splitter=true \
+--connect jdbc:mysql://groupdb.clvyneobhqj2.us-east-1.rds.amazonaws.com/IMDB_NORMALIZED \
+--username admin \
+--password groupdb1234567890 \
+--table Movie \
+--target-dir s3://groupmsba/Movie \
+--as-parquetfile
+
+
+## Loading Fact Tables in the data Warehouse 
+
+sqoop import --connect jdbc:mysql://groupdb.clvyneobhqj2.us-east-1.rds.amazonaws.com/IMDB_NORMALIZED --username admin --password groupdb1234567890 --table PerformanceFact --target-dir s3://groupmsba/PerformanceFact --as-parquetfile
+sqoop import --connect jdbc:mysql://groupdb.clvyneobhqj2.us-east-1.rds.amazonaws.com/IMDB_NORMALIZED --username admin --password groupdb1234567890 --table RelationshipFact --target-dir s3://groupmsba/RelationshipFact --as-parquetfile
